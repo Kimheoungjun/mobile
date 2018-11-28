@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "634220440443",
+    "firebase_url": "https://mobile-project-4ee9b.firebaseio.com",
+    "project_id": "mobile-project-4ee9b",
+    "storage_bucket": "mobile-project-4ee9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634220440443:android:99ee0c4c6e4d17e3",
+        "android_client_info": {
+          "package_name": "edu.a21300226handong.mobileproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634220440443-10viepk8hsj3s4d6m9ovitu5oghsor0l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.a21300226handong.mobileproject",
+            "certificate_hash": "615f5419f4c8d0a89e9ca57c2467debaa93f3002"
+          }
+        },
+        {
+          "client_id": "634220440443-574pcmrms4bvm8ep0e9pftchs5uik660.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAep1RwDqLxakBk4rRkVea7UQiGAxG6EiQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634220440443-574pcmrms4bvm8ep0e9pftchs5uik660.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

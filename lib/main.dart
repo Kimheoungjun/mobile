@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'home.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:async';
+import 'dart:io';
+
+final FirebaseAuth auth = FirebaseAuth.instance;
+final GoogleSignIn googleSignIn = GoogleSignIn();
 
 void main() => runApp(new MyApp());
 
@@ -45,6 +53,26 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 
 
+  Future<String> _testSignInWithGoogle() async {
+    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth =
+    await googleUser.authentication;
+    FirebaseUser user = await auth.signInWithGoogle(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    assert(user.email != null);
+    assert(user.displayName != null);
+    assert(!user.isAnonymous);
+    assert(await user.getIdToken() != null);
+
+    final FirebaseUser currentUser = await auth.currentUser();
+    assert(user.uid == currentUser.uid);
+
+    print(user.uid);
+    if(user.uid!=null) Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -63,7 +91,11 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height:180.0),
                 MaterialButton(
                   child: button('Google'),
-                  onPressed:(){},
+                  onPressed:(){
+                    setState((){
+                      _testSignInWithGoogle();
+                    });
+                  },
                   color:Colors.white,
                 ),
                 SizedBox(height:5.0),
