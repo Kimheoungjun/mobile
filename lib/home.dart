@@ -40,12 +40,7 @@ class _HomeState extends State<Home> {
                   child: new CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 60.0,
-                    child: new Icon(
-                        list[index]
-                        ["icon"],
-                        size: 60.0,
-                        color: list[index]
-                        ["color"]),
+                    child: Image.network('https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/kisspng-league-of-legends-computer-icons-riven-riot-games-legends-5aeb2a5fea9ef1.395510301525361247961.png?alt=media&token=a8d93e49-c1ee-462d-9884-66333103fc0b',width: 70.0,height:70.0)
                   ),
 
                   padding: const EdgeInsets.only(
@@ -131,57 +126,59 @@ class _HomeState extends State<Home> {
 
 List list = [
   {
-    "id": "business",
-    "name": "Business",
-    "icon": Icons.work,
+    "id": "All",
+    "name": "All",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/Icon_all.png?alt=media&token=20a02233-91cb-4ff5-81de-ddd48c8e364a",
     "color": Colors.teal
   },
   {
-    "id": "technology",
-    "name": "Technology",
-    "icon": Icons.smartphone,
+    "id": "Overwatch",
+    "name": "Overwatch",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/Overwatch_circle_logo.svg.png?alt=media&token=b7c7f7f1-7efa-4d5f-bcbf-070b1fd75357",
     "color": Colors.grey[600]
   },
   {
-    "id": "science-and-nature",
-    "name": "Science and Nature",
-    "icon": Icons.nature_people,
+    "id": "Taxi",
+    "name": "Taxi",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/kisspng-logo-brand-font-product-line-taxi-465-kb-latest-version-for-free-downloa-5bf89303d4a5a9.599261051543017219871.png?alt=media&token=dffe0d55-33e9-418c-9a2f-381bae3e8490",
     "color": Colors.green[600]
   },
   {
-    "id": "sport",
-    "name": "Sports",
-    "icon": Icons.directions_bike,
+    "id": "Bowling",
+    "name": "Bowling",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/kisspng-bowling-pin-sport-clip-art-5b00bde4d47840.6393476415267752688703.png?alt=media&token=45707691-8b00-4bf4-ab9d-945c410de669",
     "color": Colors.deepOrange
   },
   {
-    "id": "gaming",
-    "name": "Gaming",
-    "icon": Icons.videogame_asset,
+    "id": "LeagueOfLegend",
+    "name": "LeagueOfLegend",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/kisspng-league-of-legends-computer-icons-riven-riot-games-legends-5aeb2a5fea9ef1.395510301525361247961.png?alt=media&token=a8d93e49-c1ee-462d-9884-66333103fc0b",
     "color": Colors.orange
   },
   {
     "id": "general",
+
+
     "name": "General",
-    "icon": Icons.people,
+    "url": Icons.people,
     "color": Colors.cyan
   },
   {
     "id": "entertainment",
     "name": "Entertainment",
-    "icon": Icons.local_movies,
+    "url": Icons.local_movies,
     "color": Colors.purple
   },
   {
     "id": "health-and-medical",
     "name": "Health and Medical",
-    "icon": Icons.local_hospital,
+    "url": Icons.local_hospital,
     "color": Colors.red
   },
   {
     "id": "music",
     "name": "Music",
-    "icon": Icons.music_note,
+    "url": Icons.music_note,
     "color": Colors.amber
   },
 ];
