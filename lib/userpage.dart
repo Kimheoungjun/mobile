@@ -20,6 +20,30 @@ class _UserState extends State<UserPage> {
   final FirebaseUser user;
   _UserState({Key ky, @required this.user, @required this.user1});
   double progressIndicatorValue = 0.0;
+  void _showDialog1() {
+    // flutter defined function
+    showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("신뢰도 평가"),
+          content: new Text("자기 자신은 평가 할 수 없습니다."),
+
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Yes", style: TextStyle(fontWeight: FontWeight.bold)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   void _showDialog() {
     // flutter defined function
     showDialog(
@@ -126,7 +150,8 @@ class _UserState extends State<UserPage> {
                             Flexible(
                               child: new GestureDetector(
                                 onTap: (){
-                                  _showDialog();
+                                  user.uid == user1?
+                                  _showDialog1():_showDialog();
                                 },
                                 child: new Container(
                                   decoration: new BoxDecoration(  //튀어나와보이게 하는 효과. 터치할 수 있음을 유저에게 시각적으로 알려줌.
