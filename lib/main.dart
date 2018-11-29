@@ -73,8 +73,8 @@ class _LoginPageState extends State<LoginPage> {
     assert(user.uid == currentUser.uid);
 
     print(user.uid);
-    /*DateTime now = DateTime.now();
-    var formattedDate = DateFormat('yyyy.mm.dd');
+    DateTime now = DateTime.now();
+    var formattedDate = DateFormat('yyyy.MM.dd');
     Map<String,dynamic> data={
       'current' : formattedDate.format(now),
       'count':0,
@@ -83,8 +83,19 @@ class _LoginPageState extends State<LoginPage> {
       'uid':user.uid,
       'url':user.photoUrl
     };
-    Firestore.instance.collection('user').where('uid',isEqualTo: user.uid).snapshots().length==1?:;*/
-    if(user.uid!=null) Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+    Map<String,dynamic> data2={
+      'current' : formattedDate.format(now),
+      'name': user.displayName,
+      'url':user.photoUrl
+    };
+    Firestore.instance.collection('user').document(user.uid).snapshots().isEmpty==true?
+    Firestore.instance.collection('user').document(user.uid).setData(data,merge:true).whenComplete((){
+      Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+    }):
+    Firestore.instance.collection('user').document(user.uid).updateData(data2).whenComplete((){
+      Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+    });
+    
   }
 
   @override
