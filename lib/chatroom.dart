@@ -73,25 +73,32 @@ class ChatroomState extends State<Chatroom> {
                           color: Colors.white,
                           width: 350.0,
                           height: 380.0,
-                          child: Text("chat")
+                          child: StreamBuilder(
+                            stream:Firestore.instance.collection('list').document(document.documentID).collection('chat').orderBy('time',descending: false).snapshots(),
+                            builder: (context, snapshot){
+                              if(!snapshot.hasData) return Text("Loading....");
+                              return ListView.builder(
+                                itemCount: snapshot.data.documents.length,
+                                itemBuilder: (context,index)=>
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children:[
+                                      Padding(
+                                        padding:EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+                                        child: Row(children:[
+                                          Expanded(child: Text("${snapshot.data.documents[index]['name']} : ${snapshot.data.documents[index]['content']}",style: TextStyle(fontSize: 18.0,color: Colors.black),overflow: TextOverflow.clip,softWrap: true,)),
+                                          Text(snapshot.data.documents[index]['time'],style: TextStyle(fontSize: 13.0,color: Colors.grey),overflow: TextOverflow.clip,softWrap: true,)
+                                        ]),
+                                      )
+                                    ]
+                                  ),
+                              );
+                            },
+                          )
                       ),
                       SizedBox(height: 20.0),
-                      /*Flexible(
-                child: StreamBuilder(
-                  stream:Firestore.instance.collection('join').where('id',isEqualTo: document['id']).snapshots(),
-                  builder:(context,snapshot){
-                    if(!snapshot.hasData) return const Text('Loading...');
-                    return Center(
-                      child:GridView.builder(
-                        gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                        itemCount:snapshot.data.documents.length,
-                        itemBuilder: (context, index) =>
-                         buildUser(context,snapshot.data.documents[index]),
-                      )
-                    );
-                  }
-                ),
-              ),*/
+
                       Center(
                         child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,

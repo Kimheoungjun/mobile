@@ -74,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
 
     print(user.uid);
     DateTime now = DateTime.now();
+    print(DateTime.now());
     var formattedDate = DateFormat('yyyy.MM.dd');
     Map<String,dynamic> data={
       'current' : formattedDate.format(now),
