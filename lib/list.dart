@@ -7,14 +7,16 @@ import 'chatroom.dart';
 
 class ListPage extends StatefulWidget{
   final FirebaseUser user;
-  ListPage({Key key, @required this.user});
+  String theme;
+  ListPage({Key key, @required this.user, @required this.theme});
   @override
-  ListPageState createState() => ListPageState(user:user);
+  ListPageState createState() => ListPageState(user:user, theme:theme);
 }
 
 class ListPageState extends State<ListPage> {
   final FirebaseUser user;
-  ListPageState({Key key, @required this.user});
+  String theme;
+  ListPageState({Key key, @required this.user, @required this.theme});
   Widget buildCards(BuildContext context, DocumentSnapshot document){
     return GestureDetector(
       onTap:(){Navigator.push(context,MaterialPageRoute(builder:(context)=>Chatroom(document:document,user:user)));},
@@ -131,14 +133,14 @@ class ListPageState extends State<ListPage> {
                 Center(
                   child:Column(
                     children:[
-                      Text("Theme"),
+                      Text(theme.toUpperCase()),
                       Text("Location"),
                     ]
                   )
                 ),
                 Flexible(
                 child: StreamBuilder(
-                  stream:Firestore.instance.collection('list').snapshots(),
+                  stream:theme=="All"?Firestore.instance.collection('list').snapshots():Firestore.instance.collection('list').where("theme",isEqualTo: theme).snapshots(),
                   builder:(context,snapshot){
                     if(!snapshot.hasData) return const Text('\n\n\n\nLoading...',style:TextStyle(fontSize: 20.0));
                     return ListView.builder(

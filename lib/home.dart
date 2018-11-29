@@ -19,6 +19,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final FirebaseUser user;
   int i;
+  String theme;
   _HomeState({Key ky, @required this.user, @required this.i});
 
 
@@ -40,7 +41,7 @@ class _HomeState extends State<Home> {
                   child: new CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 60.0,
-                    child: Image.network('https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/kisspng-league-of-legends-computer-icons-riven-riot-games-legends-5aeb2a5fea9ef1.395510301525361247961.png?alt=media&token=a8d93e49-c1ee-462d-9884-66333103fc0b',width: 70.0,height:70.0)
+                    child: Image.network(list[index]['url'],width: 70.0,height:70.0)
                   ),
 
                   padding: const EdgeInsets.only(
@@ -58,6 +59,7 @@ class _HomeState extends State<Home> {
           onTap: () {
             setState((){
               i=4;
+              theme = list[index]['name'];
             });
           },
         );
@@ -89,7 +91,7 @@ class _HomeState extends State<Home> {
           ),
           ]
         ),
-      ):i==2?MyPage(user:user):i==4?ListPage(user:user):null,
+      ):i==2?MyPage(user:user):i==4?ListPage(user:user,theme:theme):null,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0, // this will be set when a new tab is tapped
         items: [
@@ -156,29 +158,27 @@ List list = [
     "color": Colors.orange
   },
   {
-    "id": "general",
-
-
-    "name": "General",
-    "url": Icons.people,
+    "id": "Soccer",
+    "name": "Soccer",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/kisspng-football-player-stock-photography-royalty-free-man-playing-soccer-5a8e79a2b27b47.2951134815192866907311.png?alt=media&token=f2eb6b87-a274-4e01-9a48-35532c4cc3e0",
     "color": Colors.cyan
   },
   {
-    "id": "entertainment",
-    "name": "Entertainment",
-    "url": Icons.local_movies,
+    "id": "Game",
+    "name": "Game",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/kisspng-video-game-monster-hunter-world-game-controllers-gaming-vector-5adc397f5aedd2.7636681115243820793725.png?alt=media&token=764db092-7c49-426f-855b-b973c9ad3ef8",
     "color": Colors.purple
   },
   {
-    "id": "health-and-medical",
-    "name": "Health and Medical",
-    "url": Icons.local_hospital,
+    "id": "Study",
+    "name": "Study",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/study-icon-7864.png?alt=media&token=7992c724-95e8-45ef-ba33-e27eb71bf8da",
     "color": Colors.red
   },
   {
-    "id": "music",
-    "name": "Music",
-    "url": Icons.music_note,
+    "id": "Sport",
+    "name": "Sport",
+    "url": "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/sport-1.png?alt=media&token=fba83a82-aaf1-402c-9734-e5eecffffa1a",
     "color": Colors.amber
   },
 ];

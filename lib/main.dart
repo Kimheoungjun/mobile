@@ -4,6 +4,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
 import 'dart:io';
+import 'dart:io';
+import 'package:intl/intl.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -70,6 +73,17 @@ class _LoginPageState extends State<LoginPage> {
     assert(user.uid == currentUser.uid);
 
     print(user.uid);
+    /*DateTime now = DateTime.now();
+    var formattedDate = DateFormat('yyyy.mm.dd');
+    Map<String,dynamic> data={
+      'current' : formattedDate.format(now),
+      'count':0,
+      'name': user.displayName,
+      'rel':0,
+      'uid':user.uid,
+      'url':user.photoUrl
+    };
+    Firestore.instance.collection('user').where('uid',isEqualTo: user.uid).snapshots().length==1?:;*/
     if(user.uid!=null) Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
   }
 
