@@ -89,13 +89,18 @@ class _LoginPageState extends State<LoginPage> {
       'name': user.displayName,
       'url':user.photoUrl
     };
-    Firestore.instance.collection('user').document(user.uid).snapshots().isEmpty==true?
-    Firestore.instance.collection('user').document(user.uid).setData(data,merge:true).whenComplete((){
-      Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
-    }):
-    Firestore.instance.collection('user').document(user.uid).updateData(data2).whenComplete((){
-      Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+    print(Firestore.instance.collection('user').document(user.uid).snapshots().isEmpty==true);
+    Firestore.instance.collection('user').document(user.uid).snapshots().listen((snapshot){
+      snapshot.exists?
+      Firestore.instance.collection('user').document(user.uid).updateData(data2).whenComplete((){
+        Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+      }):
+      Firestore.instance.collection('user').document(user.uid).setData(data,merge:true).whenComplete((){
+        Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+      });
     });
+
+
     
   }
 

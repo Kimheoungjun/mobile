@@ -6,52 +6,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74f637ac-542d-4bce-b6e9-6953b189ed26" name="Default" comment="home">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" afterDir="false" />
+    <list default="true" id="74f637ac-542d-4bce-b6e9-6953b189ed26" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/edu/a21300226handong/mobileproject/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/edu/a21300226handong/mobileproject/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ios/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Base.lproj/LaunchScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/main.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/main.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/chatroom.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/chatroom.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/list.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mypage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mypage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/userpage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/userpage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile_project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile_project_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mobile_project_android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -66,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+            <state relative-caret-position="437">
+              <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -78,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chatroom.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chatroom.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/chatroom.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="83" column="19" lean-forward="true" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="19" />
+            <state relative-caret-position="171">
+              <caret line="39" column="132" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="132" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -93,7 +52,7 @@
       <file leaf-file-name="home.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/home.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
+            <state relative-caret-position="1368">
               <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -105,8 +64,8 @@
       <file leaf-file-name="userpage.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/userpage.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="151" column="14" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
+            <state relative-caret-position="76">
+              <caret line="46" column="2" selection-start-line="46" selection-start-column="2" selection-end-line="75" selection-end-column="3" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -117,8 +76,8 @@
       <file leaf-file-name="list.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/list.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2489">
-              <caret line="135" column="46" selection-start-line="135" selection-start-column="46" selection-end-line="135" selection-end-column="46" />
+            <state relative-caret-position="203">
+              <caret line="65" column="80" lean-forward="true" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="80" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -130,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/lib/mypage.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
-              <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+              <caret line="40" column="3" selection-start-line="17" selection-start-column="2" selection-end-line="40" selection-end-column="3" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -186,6 +145,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>pages</find>
+      <find>dia</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,9 +159,9 @@
         <option value="$PROJECT_DIR$/android/app/build.gradle" />
         <option value="$PROJECT_DIR$/lib/mypage.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/lib/chatroom.dart" />
         <option value="$PROJECT_DIR$/lib/userpage.dart" />
         <option value="$PROJECT_DIR$/lib/home.dart" />
+        <option value="$PROJECT_DIR$/lib/chatroom.dart" />
         <option value="$PROJECT_DIR$/lib/list.dart" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
       </list>
@@ -218,7 +178,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -249,6 +208,7 @@
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -357,7 +317,21 @@
       <option name="project" value="LOCAL" />
       <updated>1543392546483</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="user add">
+      <created>1543498083233</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1543498083234</updated>
+    </task>
+    <task id="LOCAL-00005" summary="chatroom chatting">
+      <created>1543501370013</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1543501370013</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -371,6 +345,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="762" y="0" width="781" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="IDEtalk" order="3" />
@@ -385,7 +360,6 @@
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32900432" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.3266187" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -398,6 +372,7 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Flutter Inspector" order="3" weight="0.32871014" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.3266187" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="1" />
@@ -414,7 +389,9 @@
     <MESSAGE value="github connect" />
     <MESSAGE value="chatroom" />
     <MESSAGE value="home" />
-    <option name="LAST_COMMIT_MESSAGE" value="home" />
+    <MESSAGE value="user add" />
+    <MESSAGE value="chatroom chatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="chatroom chatting" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/android/app/build.gradle">
@@ -801,10 +778,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/list.dart">
+    <entry file="file://$PROJECT_DIR$/lib/mypage.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2489">
-          <caret line="135" column="46" selection-start-line="135" selection-start-column="46" selection-end-line="135" selection-end-column="46" />
+        <state relative-caret-position="304">
+          <caret line="40" column="3" selection-start-line="17" selection-start-column="2" selection-end-line="40" selection-end-column="3" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -813,18 +790,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/userpage.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="151" column="14" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/mypage.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+        <state relative-caret-position="76">
+          <caret line="46" column="2" selection-start-line="46" selection-start-column="2" selection-end-line="75" selection-end-column="3" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -833,18 +800,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/home.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
+        <state relative-caret-position="1368">
           <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -853,10 +810,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/chatroom.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="83" column="19" lean-forward="true" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="19" />
+        <state relative-caret-position="171">
+          <caret line="39" column="132" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="132" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/list.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="65" column="80" lean-forward="true" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

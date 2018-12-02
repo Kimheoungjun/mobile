@@ -4,6 +4,7 @@ import 'userpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'home.dart';
 
 class Chatroom extends StatefulWidget {
   final FirebaseUser user;
@@ -18,6 +19,40 @@ class ChatroomState extends State<Chatroom> {
   DocumentSnapshot document;
 
   ChatroomState({Key key, @required this.document, @required this.user});
+
+  void _showDialog(DocumentSnapshot document) {
+    // flutter defined function
+    showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("EXIT"),
+          content: new Text("방에서 나가시겠습니까?"),
+
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Yes", style: TextStyle(fontWeight: FontWeight.bold)),
+              onPressed: () {
+                Firestore.instance.collection('join').document('${user.uid}${document['id']}').delete().whenComplete((){
+                  Firestore.instance.collection('list').document(document.documentID).updateData({'current':document['current']-1});
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+                });
+              },
+            ),
+            new FlatButton(
+              child: new Text("No", style: TextStyle(fontWeight: FontWeight.bold)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +183,9 @@ class ChatroomState extends State<Chatroom> {
                               child: Text("Exit"),
                               color: Colors.black,
                               textColor: Colors.white,
-                              onPressed: () {},
+                              onPressed: () {
+                                _showDialog(document);
+                              },
                             )
                             ]
                         ),

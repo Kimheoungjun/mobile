@@ -17,9 +17,58 @@ class ListPageState extends State<ListPage> {
   final FirebaseUser user;
   String theme;
   ListPageState({Key key, @required this.user, @required this.theme});
+
+  void _showDialog(DocumentSnapshot document) {
+    // flutter defined function
+    showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("JOIN"),
+          content: new Text("방에 참여하시겠습니까?"),
+
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Yes", style: TextStyle(fontWeight: FontWeight.bold)),
+              onPressed: () {
+                Map<String,dynamic> data={
+                  'id':document['id'],
+                  'name': user.displayName,
+                  'uid':user.uid,
+                  'url':user.photoUrl
+                };
+                Firestore.instance.collection('join').document('${user.uid}${document['id']}').setData(data).whenComplete((){
+                  Firestore.instance.collection('list').document(document.documentID).updateData({'current':document['current']+1});
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>Chatroom(document:document,user:user)));
+                });
+              },
+            ),
+            new FlatButton(
+              child: new Text("No", style: TextStyle(fontWeight: FontWeight.bold)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Widget buildCards(BuildContext context, DocumentSnapshot document){
     return GestureDetector(
-      onTap:(){Navigator.push(context,MaterialPageRoute(builder:(context)=>Chatroom(document:document,user:user)));},
+      onTap:(){
+        Firestore.instance.collection('join').document('${user.uid}${document['id']}').snapshots().listen((snapshot){
+          snapshot.exists?
+          Navigator.push(context,MaterialPageRoute(builder:(context)=>Chatroom(document:document,user:user))):
+          _showDialog(document);
+        });
+        // :
+        //
+        },
       child: new Card(
         elevation: 2.0,
 
