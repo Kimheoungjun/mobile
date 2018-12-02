@@ -4,7 +4,10 @@ import 'userpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
 import 'home.dart';
+
+final textController = TextEditingController();
 
 class Chatroom extends StatefulWidget {
   final FirebaseUser user;
@@ -131,6 +134,46 @@ class ChatroomState extends State<Chatroom> {
                               );
                             },
                           )
+                      ),
+                      Container(
+                        width:350.0,
+                        color:Colors.white,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [SizedBox(
+                            width:290.0,
+                            child:TextField(
+                              controller: textController,
+                              decoration: InputDecoration(
+                                filled:true,
+                                labelText:'input message'
+                              )
+                            )
+                          ),
+                            SizedBox(
+                              width:20.0,
+                              child: IconButton(
+                                iconSize: 30.0,
+                                icon:Icon(Icons.search),
+                                onPressed: (){
+                                  var formattedDate = DateFormat('MM.dd hh:mm');
+                                  DateTime now = DateTime.now();
+                                  Map<String,dynamic> data={
+                                    'time' : formattedDate.format(now),
+                                    'content':textController.text,
+                                    'name':user.displayName,
+                                  };
+                                  Firestore.instance.collection('list').document(document.documentID).collection('chat').document().setData(data);
+                                  textController.clear();
+                                  setState((){
+                                    print("yes");
+                                  });
+                                },
+                              ),
+                            )
+                          ]
+                        ),
                       ),
                       SizedBox(height: 20.0),
 
