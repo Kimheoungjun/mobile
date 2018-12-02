@@ -6,21 +6,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'main.dart';
 import 'dart:async';
 import 'list.dart';
+import 'package:flutter/foundation.dart';
 
 
 class Home extends StatefulWidget {
   int i;
+  String theme;
+  String location;
   final FirebaseUser user;
-  Home({Key ky, @required this.user, @required this.i});
+  Home({Key ky, @required this.user, @required this.i,@required this.location,@required this.theme});
   @override
-  _HomeState createState() => new _HomeState(user:user,i:i);
+  _HomeState createState() => new _HomeState(user:user,i:i,location:location,theme:theme);
 }
 
 class _HomeState extends State<Home> {
   final FirebaseUser user;
   int i;
   String theme;
-  _HomeState({Key ky, @required this.user, @required this.i});
+  String location;
+  _HomeState({Key ky, @required this.user, @required this.i,@required this.location,@required this.theme});
 
 
   @override
@@ -91,17 +95,13 @@ class _HomeState extends State<Home> {
           ),
           ]
         ),
-      ):i==2?MyPage(user:user):i==4?ListPage(user:user,theme:theme):null,
+      ):i==1?MyPage(user:user):i==4?ListPage(user:user,theme:theme,location: location,):null,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0, // this will be set when a new tab is tapped
         items: [
           BottomNavigationBarItem(
             icon: new Icon(Icons.home,color: Colors.black,size: 30.0,),
             title: new Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.navigation,color: Colors.black,size: 30.0),
-            title: new Text('location'),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person,color: Colors.black,size: 30.0),
@@ -113,7 +113,7 @@ class _HomeState extends State<Home> {
           )
         ],
         onTap:(index){
-          index==3?auth.signOut().then((value){
+          index==2?auth.signOut().then((value){
             Navigator.push(context,MaterialPageRoute(builder:(context)=>LoginPage(title:'danolja')));
           }):
           setState((){

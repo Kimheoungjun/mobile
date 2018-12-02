@@ -38,7 +38,7 @@ class ChatroomState extends State<Chatroom> {
               onPressed: () {
                 Firestore.instance.collection('join').document('${user.uid}${document['id']}').delete().whenComplete((){
                   Firestore.instance.collection('list').document(document.documentID).updateData({'current':document['current']-1});
-                  Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0,location:null,theme:null)));
                 });
               },
             ),

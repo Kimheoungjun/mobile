@@ -3,20 +3,82 @@ import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'chatroom.dart';
+import 'package:flutter/foundation.dart';
+import 'home.dart';
+
+enum LocationCharacter {All,Seoul,Daegu,Pohang}
 
 
 class ListPage extends StatefulWidget{
   final FirebaseUser user;
   String theme;
-  ListPage({Key key, @required this.user, @required this.theme});
+  String location;
+  ListPage({Key key, @required this.user, @required this.theme, @required this.location});
   @override
-  ListPageState createState() => ListPageState(user:user, theme:theme);
+  ListPageState createState() => ListPageState(user:user, theme:theme, location: location);
 }
 
 class ListPageState extends State<ListPage> {
+  LocationCharacter character = LocationCharacter.All;
   final FirebaseUser user;
   String theme;
-  ListPageState({Key key, @required this.user, @required this.theme});
+  String location;
+  ListPageState({Key key, @required this.user, @required this.theme, @required this.location});
+
+
+  void _showDialog2() {
+    // flutter defined function
+    showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Location Select"),
+          content: Column(
+            children:[
+              RadioListTile<LocationCharacter>(
+                title:Text("전국"),
+                value:LocationCharacter.All,
+                groupValue: character,
+                onChanged: (LocationCharacter value){
+                  character = value;
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:4,location:"전국",theme:theme)));},
+              ),
+              RadioListTile<LocationCharacter>(
+                title:Text("서울"),
+                value:LocationCharacter.Seoul,
+                groupValue: character,
+                onChanged: (LocationCharacter value){
+                  character = value;
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:4,location:"서울",theme:theme)));},
+              ),
+              RadioListTile<LocationCharacter>(
+                title:Text("대구"),
+                value:LocationCharacter.Daegu,
+                groupValue: character,
+                onChanged: (LocationCharacter value){
+                  character = value;
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:4,location:"대구",theme:theme)));},
+              ),
+              RadioListTile<LocationCharacter>(
+                title:Text("포항"),
+                value:LocationCharacter.Pohang,
+                groupValue: character,
+                onChanged: (LocationCharacter value){
+                  character = value;
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:4,location:"포항",theme:theme)));},
+              ),
+            ]
+          ),
+
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+          ],
+        );
+      },
+    );
+  }
 
   void _showDialog(DocumentSnapshot document) {
     // flutter defined function
@@ -183,13 +245,18 @@ class ListPageState extends State<ListPage> {
                   child:Column(
                     children:[
                       Text(theme.toUpperCase()),
-                      Text("Location"),
+                      GestureDetector(
+                        onTap:(){
+                          _showDialog2();
+                        },
+                          child: Text(location==null?"전 국":'${location}')
+                      ),
                     ]
                   )
                 ),
                 Flexible(
                 child: StreamBuilder(
-                  stream:theme=="All"?Firestore.instance.collection('list').snapshots():Firestore.instance.collection('list').where("theme",isEqualTo: theme).snapshots(),
+                  stream:theme=="All"?location=='전국'?Firestore.instance.collection('list').snapshots():Firestore.instance.collection('list').where('region',isEqualTo: location).snapshots():Firestore.instance.collection('list').where("theme",isEqualTo: theme).where('location',isEqualTo: location).snapshots(),
                   builder:(context,snapshot){
                     if(!snapshot.hasData) return const Text('\n\n\n\nLoading...',style:TextStyle(fontSize: 20.0));
                     return ListView.builder(
@@ -215,3 +282,4 @@ class ListPageState extends State<ListPage> {
 
 var list = ["[강남]직장인모임","[영화]신비한동물사전","[악기]통기타 스터디","[게임]배그 한판","[한강]산책 하실 분"];
 var location = ["강남","홍대","잠실","선릉","한강"];
+

@@ -93,10 +93,10 @@ class _LoginPageState extends State<LoginPage> {
     Firestore.instance.collection('user').document(user.uid).snapshots().listen((snapshot){
       snapshot.exists?
       Firestore.instance.collection('user').document(user.uid).updateData(data2).whenComplete((){
-        Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+        Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0,location: null,theme:null)));
       }):
       Firestore.instance.collection('user').document(user.uid).setData(data,merge:true).whenComplete((){
-        Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0)));
+        Navigator.push(context,MaterialPageRoute(builder:(context)=>Home(user:user,i:0,location: null,theme:null)));
       });
     });
 
