@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
               new SizedBox(
                 child: new Container(
                   child: new CircleAvatar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Color.fromRGBO(255,221, 3, 1.0),
                     radius: 60.0,
                     child: Image.network(list[index]['url'],width: 70.0,height:70.0)
                   ),
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
     return new Scaffold(
 
       body: i==0?Container(
-        color:Color.fromRGBO(246, 239, 239, 1.0),
+        color:Color.fromRGBO(251, 252, 212, 1.0),
         child: Column(
           children: [
             SizedBox(height:60.0,width:500.0),
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
               height: 60.0,
               decoration: BoxDecoration(
                   image:DecorationImage(
-                      image: NetworkImage("https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja.png?alt=media&token=190dadf5-ba05-4de3-aa96-934e704d5443"),
+                      image: NetworkImage("https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja2.png?alt=media&token=d83043a9-e005-4c44-bb02-95d639ef70f2"),
                       fit: BoxFit.fill
                   )
               ),
@@ -90,36 +90,42 @@ class _HomeState extends State<Home> {
             SizedBox(height:20.0,width:500.0),
             Flexible(
             child: Container(
-              color:Color.fromRGBO(246, 239, 239, 1.0),
+              color:Color.fromRGBO(251, 252, 212, 1.0),
                 child: myGridView),
           ),
           ]
         ),
       ):i==1?MyPage(user:user):i==4?ListPage(user:user,theme:theme,location: location,):null,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // this will be set when a new tab is tapped
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.home,color: Colors.black,size: 30.0,),
-            title: new Text('Home'),
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person,color: Colors.black,size: 30.0),
-              title: Text('Profile'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.exit_to_app,color: Colors.black,size: 30.0),
-            title: Text('Logout'),
-          )
-        ],
-        onTap:(index){
-          index==2?auth.signOut().then((value){
-            Navigator.push(context,MaterialPageRoute(builder:(context)=>LoginPage(title:'danolja')));
-          }):
-          setState((){
-            i=index;
-          });
-        }
+      bottomNavigationBar: Theme(
+        data:Theme.of(context).copyWith(
+          canvasColor: Color.fromRGBO(251,196, 3, 1.0),
+          primaryColor: Colors.black,
+        ),
+        child: BottomNavigationBar(
+          currentIndex: 0, // this will be set when a new tab is tapped
+          items: [
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.home,color: Colors.black,size: 30.0,),
+              title: new Text('Home'),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person,color: Colors.black,size: 30.0),
+                title: Text('Profile'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.exit_to_app,color: Colors.black,size: 30.0),
+              title: Text('Logout'),
+            )
+          ],
+          onTap:(index){
+            index==2?auth.signOut().then((value){
+              Navigator.push(context,MaterialPageRoute(builder:(context)=>LoginPage(title:'danolja')));
+            }):
+            setState((){
+              i=index;
+            });
+          }
+        ),
       ),
     );
   }
