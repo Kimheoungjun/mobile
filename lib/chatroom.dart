@@ -155,7 +155,7 @@ class ChatroomState extends State<Chatroom> {
                               width:20.0,
                               child: IconButton(
                                 iconSize: 30.0,
-                                icon:Icon(Icons.search),
+                                icon:Icon(Icons.send),
                                 onPressed: (){
                                   var formattedDate = DateFormat('MM.dd hh:mm');
                                   DateTime now = DateTime.now();
@@ -164,6 +164,7 @@ class ChatroomState extends State<Chatroom> {
                                     'content':textController.text,
                                     'name':user.displayName,
                                   };
+                                  textController.text==""?null:
                                   Firestore.instance.collection('list').document(document.documentID).collection('chat').document().setData(data);
                                   textController.clear();
                                   setState((){
