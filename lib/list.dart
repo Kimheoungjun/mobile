@@ -133,6 +133,7 @@ class ListPageState extends State<ListPage> {
         },
       child: new Card(
         elevation: 2.0,
+        color: Color.fromRGBO(255,221,3,1.0),
 
         child: new Padding(
           padding: new EdgeInsets.all(10.0),
@@ -185,21 +186,21 @@ class ListPageState extends State<ListPage> {
                             )),
                         Row(
                             children:<Widget>[
-                              new Icon(Icons.access_alarm,color:Colors.blue),
+                              new Icon(Icons.access_alarm,color:Colors.black),
                               SizedBox(width:5.0),
                               new Text(document['time']),
                             ]),
                         Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children:<Widget>[
-                              new Icon(Icons.location_on,color:Colors.blue),
+                              new Icon(Icons.location_on,color:Colors.black),
                               SizedBox(width:5.0),
                               new Text(document['region']),
                             ]),
                         Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children:<Widget>[
-                              new Icon(Icons.person,color:Colors.blue),
+                              new Icon(Icons.person,color:Colors.black),
                               SizedBox(width:5.0),
                               new Text("${document['current']}/${document['total']}명"),
                             ]),
@@ -226,7 +227,7 @@ class ListPageState extends State<ListPage> {
       home: Scaffold(
 
           body:Container(
-            color:Color.fromRGBO(246, 239, 239, 1.0),
+            color:Color.fromRGBO(251, 252, 212, 1.0),
             child: Column(
               children: [
                 SizedBox(height:30.0,width:500.0),
@@ -235,7 +236,7 @@ class ListPageState extends State<ListPage> {
                   height: 60.0,
                   decoration: BoxDecoration(
                       image:DecorationImage(
-                          image: NetworkImage("https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja.png?alt=media&token=190dadf5-ba05-4de3-aa96-934e704d5443"),
+                          image: NetworkImage("https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja2.png?alt=media&token=d83043a9-e005-4c44-bb02-95d639ef70f2"),
                           fit: BoxFit.fill
                       )
                   ),

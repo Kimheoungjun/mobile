@@ -49,7 +49,8 @@ class _MyPageState extends State<MyPage> {
   Widget _buildprofile(BuildContext context, DocumentSnapshot document){
     progressIndicatorValue = document['rel'].toDouble();
     return Container(
-      color:Color.fromRGBO(246, 239, 239, 1.0),
+      height: 600.0,
+      color:Color.fromRGBO(251,252,212,1.0),
       child: Center(
         child: Column(
           children: <Widget>[
@@ -59,7 +60,7 @@ class _MyPageState extends State<MyPage> {
               height: 60.0,
               decoration: BoxDecoration(
                   image:DecorationImage(
-                      image: NetworkImage("https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja.png?alt=media&token=190dadf5-ba05-4de3-aa96-934e704d5443"),
+                      image: NetworkImage("https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja2.png?alt=media&token=d83043a9-e005-4c44-bb02-95d639ef70f2"),
                       fit: BoxFit.fill
                   )
               ),
@@ -103,7 +104,7 @@ class _MyPageState extends State<MyPage> {
             SizedBox(height: 15.0),
             Container(
               height:130.0,
-              color: Color.fromRGBO(249, 247, 182, 1.0),
+              color: Color.fromRGBO(255,221,3, 1.0),
               child: Center(
                 child: Column(
                   children: <Widget>[

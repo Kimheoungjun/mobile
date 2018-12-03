@@ -63,7 +63,7 @@ class ChatroomState extends State<Chatroom> {
         child: ListView(
             children: [Container(
 
-                color: Color.fromRGBO(246, 239, 239, 1.0),
+                color: Color.fromRGBO(251, 252, 212, 1.0),
                 child: Column(
                     children: [
                       SizedBox(height: 15.0, width: 500.0),
@@ -73,14 +73,14 @@ class ChatroomState extends State<Chatroom> {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: NetworkImage(
-                                    "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja.png?alt=media&token=190dadf5-ba05-4de3-aa96-934e704d5443"),
+                                    "https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja2.png?alt=media&token=d83043a9-e005-4c44-bb02-95d639ef70f2"),
                                 fit: BoxFit.fill
                             )
                         ),
                       ),
                       SizedBox(height: 15.0),
                       Container(
-                          color: Color.fromRGBO(252, 223, 179, 1.0),
+                          color: Color.fromRGBO(255, 221, 3, 1.0),
                           child: Container(
                               width: 300.0,
                               child: Column(
@@ -119,15 +119,25 @@ class ChatroomState extends State<Chatroom> {
                                 itemCount: snapshot.data.documents.length,
                                 itemBuilder: (context,index)=>
                                   Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children:[
                                       Padding(
-                                        padding:EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
-                                        child: Row(children:[
-                                          Expanded(child: Text("${snapshot.data.documents[index]['name']} : ${snapshot.data.documents[index]['content']}",style: TextStyle(fontSize: 18.0,color: Colors.black),overflow: TextOverflow.clip,softWrap: true,)),
-                                          Text(snapshot.data.documents[index]['time'],style: TextStyle(fontSize: 13.0,color: Colors.grey),overflow: TextOverflow.clip,softWrap: true,)
-                                        ]),
+                                        padding:EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 0.0),
+                                        child: Container(
+                                          width:300.0,
+                                          decoration: BoxDecoration(
+                                            color:Color.fromRGBO(251,196,3,1.0),
+                                            borderRadius: BorderRadius.circular(10.0)
+                                          ),
+                                          child: Padding(
+                                            padding:EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+                                            child: Row(children:[
+                                              Expanded(child: Text("${snapshot.data.documents[index]['name']} : ${snapshot.data.documents[index]['content']}",style: TextStyle(fontSize: 18.0,color: Colors.black),overflow: TextOverflow.clip,softWrap: true,)),
+                                              Text(snapshot.data.documents[index]['time'],style: TextStyle(fontSize: 13.0,color: Colors.grey),overflow: TextOverflow.clip,softWrap: true,)
+                                            ]),
+                                          ),
+                                        ),
                                       )
                                     ]
                                   ),

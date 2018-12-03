@@ -113,11 +113,11 @@ class _LoginPageState extends State<LoginPage> {
     // than having to individually change instances of widgets.
     return Center(
         child: Container(
-          color: Color.fromRGBO(246, 239, 239, 1.0),
+          color: Color.fromRGBO(251, 252, 212, 1.0),
           child: Column(
               children: [
                 SizedBox(height:100.0,width:500.0),
-                Image.network('https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja.png?alt=media&token=190dadf5-ba05-4de3-aa96-934e704d5443',width:320.0),
+                Image.network('https://firebasestorage.googleapis.com/v0/b/mobile-project-4ee9b.appspot.com/o/danolja2.png?alt=media&token=d83043a9-e005-4c44-bb02-95d639ef70f2',width:320.0),
                 SizedBox(height:180.0),
                 MaterialButton(
                   child: button('Google'),
