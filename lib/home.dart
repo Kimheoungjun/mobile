@@ -42,10 +42,11 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               new SizedBox(
                 child: new Container(
+
                   child: new CircleAvatar(
                     backgroundColor: Color.fromRGBO(255,221, 3, 1.0),
                     radius: 60.0,
-                    child: Image.network(list[index]['url'],width: 70.0,height:70.0)
+                    child: Image.network(list[index]['url'],width: 70.0,height:70.0),
                   ),
 
                   padding: const EdgeInsets.only(

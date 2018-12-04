@@ -102,51 +102,55 @@ class _MyPageState extends State<MyPage> {
               ],
             ),
             SizedBox(height: 15.0),
-            Container(
-              height:130.0,
-              color: Color.fromRGBO(255,221,3, 1.0),
-              child: Center(
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding:EdgeInsets.fromLTRB(100.0, 20.0, 100.0, 5.0),
-                      child: Row(
-                          children: [
-                            Icon(Icons.assignment_ind,color: Colors.red,size: 50.0,),
-                            Flexible(
-                              child: new GestureDetector(
-                                  onTap: (){
-                                    _showDialog();
-                                  },
-                                  child: new Container(
-                                    decoration: new BoxDecoration(  //튀어나와보이게 하는 효과. 터치할 수 있음을 유저에게 시각적으로 알려줌.
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.redAccent.withOpacity(0.5),
-                                          offset: Offset(3.0, 3.0),
-                                          blurRadius: 2.0,
-                                        ),
-                                      ],
-                                    ),
-                                    child: SizedBox(
-                                      height:15.0,
-                                      child: new LinearProgressIndicator(
-                                        valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
-                                        backgroundColor: Colors.redAccent.withOpacity(0.5),
-                                        value: progressIndicatorValue*.01,
-
+            Card(
+              elevation: 20.0,
+              child: Container(
+                height:130.0,
+                width: 300.0,
+                color: Color.fromRGBO(255,221,3, 1.0),
+                child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding:EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
+                        child: Row(
+                            children: [
+                              Icon(Icons.assignment_ind,color: Colors.red,size: 50.0,),
+                              Flexible(
+                                child: new GestureDetector(
+                                    onTap: (){
+                                      _showDialog();
+                                    },
+                                    child: new Container(
+                                      decoration: new BoxDecoration(  //튀어나와보이게 하는 효과. 터치할 수 있음을 유저에게 시각적으로 알려줌.
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.redAccent.withOpacity(0.5),
+                                            offset: Offset(3.0, 3.0),
+                                            blurRadius: 2.0,
+                                          ),
+                                        ],
                                       ),
+                                      child: SizedBox(
+                                        height:15.0,
+                                        child: new LinearProgressIndicator(
+                                          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                                          backgroundColor: Colors.redAccent.withOpacity(0.5),
+                                          value: progressIndicatorValue*.01,
+
+                                        ),
+                                ),
                               ),
-                            ),
+                                ),
                               ),
-                            ),
-                          ]
+                            ]
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 5.0),
-                    new Text('유저의 신뢰도는 ${document['rel'].toString()} 입니다.',
-                      style: TextStyle(fontSize: 20.0,fontFamily: "Allura"),),
-                  ],
+                      SizedBox(height: 5.0),
+                      new Text('유저의 신뢰도는 ${document['rel'].toString()} 입니다.',
+                        style: TextStyle(fontSize: 20.0,fontFamily: "Allura"),),
+                    ],
+                  ),
                 ),
               ),
             ),
