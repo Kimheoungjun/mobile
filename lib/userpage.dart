@@ -4,22 +4,39 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'home.dart';
 import 'mypage.dart';
+import 'insert.dart';
 
 class UserPage extends StatefulWidget {
   final String user1;
   final FirebaseUser user;
-  UserPage({Key ky, @required this.user, @required this.user1});
+  UserPage({Key ky, @required this.user, @required this.user1});  //user1은 평가하려는 유저의 ID
   @override
   _UserState createState() => _UserState(user:user,user1:user1);
 }
 
 class _UserState extends State<UserPage> {
-  int i = 10;
+  ////////
+  final _relVoteFormKey = GlobalKey<FormState>();
+  final TextEditingController _relVoteController = new TextEditingController();
+  ////////
+  //int i = 10;
   //////// Indicator
   final String user1;
   final FirebaseUser user;
   _UserState({Key ky, @required this.user, @required this.user1});
   double progressIndicatorValue = 0.0;
+  ////////
+  void _onSubmit(DocumentSnapshot document, String relStr){
+    double relInt = double.parse(relStr); //입력받은 string 값을 double 값으로 바꾸어줌.
+    int countUp = document['count'] + 1;  //값이 하나더 추가되었으니 count +1
+    double temp = (document['rel'] * document['count'] + relInt) / countUp;  //새로 추가된 값을 포함한 평균값.
+    Firestore.instance.runTransaction((transaction) async {
+      await transaction.update(document.reference, {'count': countUp});
+      await transaction.update(document.reference, {'rel': temp});
+    });
+    _relVoteController.clear();
+  }
+  ////////
   void _showDialog1() {
     // flutter defined function
     showDialog(
@@ -44,7 +61,7 @@ class _UserState extends State<UserPage> {
       },
     );
   }
-  void _showDialog() {
+  void _showDialog(DocumentSnapshot document) {
     // flutter defined function
     showDialog(
       barrierDismissible: true,
@@ -53,18 +70,31 @@ class _UserState extends State<UserPage> {
         // return object of type Dialog
         return AlertDialog(
           title: new Text("신뢰도 평가"),
-          content: new Text("해당 유저는 신뢰할만 합니까?"),
-
-          actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Yes", style: TextStyle(fontWeight: FontWeight.bold)),
-              onPressed: () {
-                Navigator.of(context).pop();
+          content: new Form(
+            key: _relVoteFormKey,
+            child: TextFormField(
+              controller: _relVoteController,
+              decoration: InputDecoration(
+                hintText: '신뢰도를 입력해주세요',
+              ),
+              validator: (value){
+                if(value.isEmpty){
+                  return '신뢰도를 입력해주세요';
+                }
               },
             ),
+          ),
+
+          actions: <Widget>[
             new FlatButton(
-              child: new Text("No", style: TextStyle(fontWeight: FontWeight.bold)),
+              child: new Text("Enter", style: TextStyle(fontWeight: FontWeight.bold)),
+              onPressed: () {
+                _onSubmit(document, _relVoteController.text);//텍스트폼필드에 입력된 값으로 Firebase에 업데이트.
+              },
+            ),
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Cancel", style: TextStyle(fontWeight: FontWeight.bold)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -81,7 +111,7 @@ class _UserState extends State<UserPage> {
     });
   }
 
-  Widget _buildprofile(BuildContext context, DocumentSnapshot document){
+  Widget _buildprofile(BuildContext context, DocumentSnapshot document){  //document는 평가할려는 대상 유저의 document
     progressIndicatorValue = document['rel'].toDouble();
     return Container(
       height: 600.0,
@@ -112,7 +142,6 @@ class _UserState extends State<UserPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 FloatingActionButton(
-                  elevation: 10.0,
                   backgroundColor: Colors.redAccent,
                   child: IconButton(
                     icon: Icon(Icons.add_alert),
@@ -121,7 +150,6 @@ class _UserState extends State<UserPage> {
                 ),
                 SizedBox(width: 20.0),
                 FloatingActionButton(
-                  elevation: 10.0,
                   backgroundColor: Colors.redAccent,
                   child: IconButton(
                     icon: Icon(Icons.calendar_today),
@@ -130,7 +158,6 @@ class _UserState extends State<UserPage> {
                 ),
                 SizedBox(width: 20.0),
                 FloatingActionButton(
-                  elevation: 10.0,
                   backgroundColor: Colors.redAccent,
                   child: IconButton(
                     icon: Icon(Icons.map),
@@ -140,56 +167,51 @@ class _UserState extends State<UserPage> {
               ],
             ),
             SizedBox(height: 15.0),
-            Card(
-              elevation: 20.0,
-              child: Container(
-                width: 300.0,
-                height:130.0,
-                color: Color.fromRGBO(255,221,3, 1.0),
-                child: Center(
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding:EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
-                        child: Row(
-                            children: [
-                              Icon(Icons.assignment_ind,color: Colors.red,size: 50.0,),
-                              Flexible(
-                                child: new GestureDetector(
-                                  onTap: (){
-                                    user.uid == user1?
-                                    _showDialog1():_showDialog();
-                                  },
-                                  child: new Container(
-                                    decoration: new BoxDecoration(  //튀어나와보이게 하는 효과. 터치할 수 있음을 유저에게 시각적으로 알려줌.
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.redAccent.withOpacity(0.5),
-                                          offset: Offset(3.0, 3.0),
-                                          blurRadius: 2.0,
-                                        ),
-                                      ],
-                                    ),
-                                    child: SizedBox(
-                                      height:15.0,
-                                      child: new LinearProgressIndicator(
-                                        valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
-                                        backgroundColor: Colors.redAccent.withOpacity(0.5),
-                                        value: progressIndicatorValue*.01,
-
+            Container(
+              height:130.0,
+              color: Color.fromRGBO(255,221,3, 1.0),
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding:EdgeInsets.fromLTRB(100.0, 20.0, 100.0, 5.0),
+                      child: Row(
+                          children: [
+                            Icon(Icons.assignment_ind,color: Colors.red,size: 50.0,),
+                            Flexible(
+                              child: new GestureDetector(
+                                onTap: (){
+                                  user.uid == user1?
+                                  _showDialog1():_showDialog(document);
+                                },
+                                child: new Container(
+                                  decoration: new BoxDecoration(  //튀어나와보이게 하는 효과. 터치할 수 있음을 유저에게 시각적으로 알려줌.
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.redAccent.withOpacity(0.5),
+                                        offset: Offset(3.0, 3.0),
+                                        blurRadius: 2.0,
                                       ),
+                                    ],
+                                  ),
+                                  child: SizedBox(
+                                    height:15.0,
+                                    child: new LinearProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                                      backgroundColor: Colors.redAccent.withOpacity(0.5),
+                                      value: progressIndicatorValue*.01,
                                     ),
                                   ),
                                 ),
                               ),
-                            ]
-                        ),
+                            ),
+                          ]
                       ),
-                      SizedBox(height: 5.0),
-                      new Text('유저의 신뢰도는 ${document['rel'].toString()} 입니다.',
-                        style: TextStyle(fontSize: 20.0,fontFamily: "Allura"),),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 5.0),
+                    new Text('유저의 신뢰도는 ${document['rel'].toInt().toString()} 입니다.',
+                      style: TextStyle(fontSize: 20.0,fontFamily: "Allura"),),
+                  ],
                 ),
               ),
             ),

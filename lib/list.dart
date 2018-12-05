@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'chatroom.dart';
 import 'package:flutter/foundation.dart';
 import 'home.dart';
+import 'insert.dart';
 
 enum LocationCharacter {All,Seoul,Daegu,Pohang}
 
@@ -257,7 +258,13 @@ class ListPageState extends State<ListPage> {
                 ),
                 Flexible(
                 child: StreamBuilder(
-                  stream:theme=="All"?location=='전국'?Firestore.instance.collection('list').snapshots():Firestore.instance.collection('list').where('region',isEqualTo: location).snapshots():Firestore.instance.collection('list').where("theme",isEqualTo: theme).where('location',isEqualTo: location).snapshots(),
+                  stream:theme=="All"?
+                    location=='전국'?
+                      Firestore.instance.collection('list').snapshots():
+                      Firestore.instance.collection('list').where('region',isEqualTo: location).snapshots():
+                    location=='전국'?
+                      Firestore.instance.collection('list').where("theme",isEqualTo: theme).snapshots():
+                      Firestore.instance.collection('list').where("theme",isEqualTo: theme).where('region',isEqualTo: location).snapshots(),
                   builder:(context,snapshot){
                     if(!snapshot.hasData) return const Text('\n\n\n\nLoading...',style:TextStyle(fontSize: 20.0));
                     return ListView.builder(
@@ -275,7 +282,12 @@ class ListPageState extends State<ListPage> {
 
               ]
             ),
-          )
+          ),
+        floatingActionButton: FloatingActionButton(onPressed: (){
+          Navigator.push(context,MaterialPageRoute(builder:(context)=>AddPage(user:user)));
+        },
+        child: Icon(Icons.add,size: 30.0,color: Colors.black,),
+        backgroundColor:Color.fromRGBO(255,221,3,1.0) ,),
       ),
     );
   }
