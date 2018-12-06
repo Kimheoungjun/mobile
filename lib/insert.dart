@@ -79,10 +79,10 @@ class AddPageState extends State<AddPage> {
     return new Scaffold(
         appBar: AppBar(
             iconTheme: IconThemeData(color:Colors.black),
-            title: Text('모임 만들기',style: TextStyle(color:Colors.black),),backgroundColor: Color.fromRGBO(251, 252, 212, 1.0)),
+            title: Text('모임 만들기',style: TextStyle(color:Colors.black),),backgroundColor: Colors.grey[100]),
     body: SafeArea(
         child: Container(
-          color:Color.fromRGBO(251, 252, 212, 1.0),
+          color:Colors.grey[100],
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             children: <Widget>[
@@ -175,7 +175,7 @@ class AddPageState extends State<AddPage> {
               ),
               SizedBox(height: 12.0),
 
-              Text('Date selected : ${formattedDate.format(_date)}'),
+              Text('Date selected : ${formattedDate.format(_date)}',style:TextStyle(fontSize: 20.0)),
               SizedBox(height: 12.0),
                   RaisedButton(
                     child: Text('Select Date'),
@@ -185,7 +185,7 @@ class AddPageState extends State<AddPage> {
                     color: Color.fromRGBO(255,221,3,1.0),
                   ),
               SizedBox(height: 12.0),
-              Text('Time selected : ${_time.hour} : ${_time.minute}'),
+              Text('Time selected : ${_time.hour} : ${_time.minute}',style:TextStyle(fontSize: 20.0)),
               SizedBox(height: 12.0),
 
               RaisedButton(
@@ -239,7 +239,14 @@ class AddPageState extends State<AddPage> {
                       DocumentReference docReferance = collRef.document();
                       docReferance.setData(data).then((doc){
                         print('${docReferance.documentID}');
-                        Firestore.instance.collection('list').document(docReferance.documentID).collection('chat').document().setData({'content':'방이 생성되었습니다','name':user.displayName,'time':'${DateTime.now().month}.${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}'});
+                        DateTime now = DateTime.now();
+                        Map<String,dynamic> data1={
+                          'time' : '${now.month}.${now.day} ${now.hour}:${now.minute}',
+                          'content':'방이 생성되었습니다.',
+                          'name':user.displayName,
+                          'stamp':FieldValue.serverTimestamp()
+                        };
+                        Firestore.instance.collection('list').document(docReferance.documentID).collection('chat').document().setData(data1);
                         Firestore.instance.collection('list').document(docReferance.documentID).snapshots().listen((snapshot){
                           DocumentSnapshot document = snapshot;
                           Map<String,dynamic> data={

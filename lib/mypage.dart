@@ -29,7 +29,7 @@ class _MyPageState extends State<MyPage> {
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
-              child: new Text("Yes", style: TextStyle(fontWeight: FontWeight.bold)),
+              child: new Text("Yes", style: TextStyle(fontWeight: FontWeight.bold,color: Color.fromRGBO(255, 221, 3, 1.0))),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -50,7 +50,7 @@ class _MyPageState extends State<MyPage> {
     progressIndicatorValue = document['rel'].toDouble();
     return Container(
       height: 600.0,
-      color:Color.fromRGBO(251,252,212,1.0),
+      color:Colors.grey[100],
       child: Center(
         child: Column(
           children: <Widget>[
@@ -77,25 +77,25 @@ class _MyPageState extends State<MyPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 FloatingActionButton(
-                  backgroundColor: Colors.redAccent,
+                  backgroundColor: Color.fromRGBO(255, 221, 3, 1.0),
                   child: IconButton(
-                    icon: Icon(Icons.add_alert),
+                    icon: Icon(Icons.add_alert,color: Colors.black),
                     onPressed: null,
                   ),
                 ),
                 SizedBox(width: 20.0),
                 FloatingActionButton(
-                  backgroundColor: Colors.redAccent,
+                  backgroundColor:Color.fromRGBO(255, 221, 3, 1.0),
                   child: IconButton(
-                    icon: Icon(Icons.calendar_today),
+                    icon: Icon(Icons.calendar_today,color: Colors.black),
                     onPressed: null,
                   ),
                 ),
                 SizedBox(width: 20.0),
                 FloatingActionButton(
-                  backgroundColor: Colors.redAccent,
+                  backgroundColor: Color.fromRGBO(255, 221, 3, 1.0),
                   child: IconButton(
-                    icon: Icon(Icons.map),
+                    icon: Icon(Icons.map,color: Colors.black),
                     onPressed: null,
                   ),
                 ),
@@ -103,11 +103,15 @@ class _MyPageState extends State<MyPage> {
             ),
             SizedBox(height: 15.0),
             Card(
-              elevation: 20.0,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  color:Color.fromRGBO(255, 221, 3, 1.0),
+                ),
+              ),
               child: Container(
                 height:130.0,
                 width: 300.0,
-                color: Color.fromRGBO(255,221,3, 1.0),
+                color: Colors.grey[100],
                 child: Center(
                   child: Column(
                     children: <Widget>[
@@ -115,7 +119,7 @@ class _MyPageState extends State<MyPage> {
                         padding:EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 5.0),
                         child: Row(
                             children: [
-                              Icon(Icons.assignment_ind,color: Colors.red,size: 50.0,),
+                              Icon(Icons.assignment_ind,color: Colors.black,size: 50.0,),
                               Flexible(
                                 child: new GestureDetector(
                                     onTap: (){
@@ -125,7 +129,7 @@ class _MyPageState extends State<MyPage> {
                                       decoration: new BoxDecoration(  //튀어나와보이게 하는 효과. 터치할 수 있음을 유저에게 시각적으로 알려줌.
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.redAccent.withOpacity(0.5),
+                                            color: Colors.black.withOpacity(0.5),
                                             offset: Offset(3.0, 3.0),
                                             blurRadius: 2.0,
                                           ),
@@ -134,8 +138,8 @@ class _MyPageState extends State<MyPage> {
                                       child: SizedBox(
                                         height:15.0,
                                         child: new LinearProgressIndicator(
-                                          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
-                                          backgroundColor: Colors.redAccent.withOpacity(0.5),
+                                          valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                                          backgroundColor: Colors.black.withOpacity(0.1),
                                           value: progressIndicatorValue*.01,
 
                                         ),

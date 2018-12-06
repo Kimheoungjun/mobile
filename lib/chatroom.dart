@@ -38,7 +38,7 @@ class ChatroomState extends State<Chatroom> {
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
-              child: new Text("Yes", style: TextStyle(fontWeight: FontWeight.bold)),
+              child: new Text("Yes", style: TextStyle(fontWeight: FontWeight.bold,color: Color.fromRGBO(255, 221, 3, 1.0))),
               onPressed: () {
                 Firestore.instance.collection('join').document('${user.uid}${document['id']}').delete().whenComplete((){
                   Firestore.instance.collection('list').document(document.documentID).updateData({'current':document['current']-1});
@@ -47,7 +47,7 @@ class ChatroomState extends State<Chatroom> {
               },
             ),
             new FlatButton(
-              child: new Text("No", style: TextStyle(fontWeight: FontWeight.bold)),
+              child: new Text("No", style: TextStyle(fontWeight: FontWeight.bold,color: Color.fromRGBO(255, 221, 3, 1.0))),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -64,13 +64,13 @@ class ChatroomState extends State<Chatroom> {
         child: ListView(
             children: [Container(
 
-                color: Color.fromRGBO(251, 252, 212, 1.0),
+                color: Colors.grey[100],
                 child: Column(
                     children: [
-                      SizedBox(height: 15.0, width: 500.0),
+                      SizedBox(height: 10.0, width: 500.0),
                       Container(
                         width: 250.0,
-                        height: 60.0,
+                        height: 50.0,
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: NetworkImage(
@@ -79,11 +79,18 @@ class ChatroomState extends State<Chatroom> {
                             )
                         ),
                       ),
-                      SizedBox(height: 15.0),
-                      Container(
-                          color: Color.fromRGBO(255, 221, 3, 1.0),
+                      SizedBox(height: 10.0),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color:Color.fromRGBO(255, 221, 3, 1.0),
+                          ),
+                          borderRadius: BorderRadius.circular(4.0)
+                        ),
+                          color: Colors.grey[100],
                           child: Container(
                               width: 300.0,
+                              height: 137.0,
                               child: Column(
                                   children: [
                                     SizedBox(height: 5.0),
@@ -102,157 +109,178 @@ class ChatroomState extends State<Chatroom> {
                                         fontSize: 15.0,
                                         color: Colors.black,
                                         fontFamily: 'Roboto')),
-                                    SizedBox(height: 5.0),
+                                    ButtonTheme.bar(
+                                        child:ButtonBar(
+                                          mainAxisSize: MainAxisSize.min,
+                                        alignment:MainAxisAlignment.center,
+                                        children:[
+                                          FlatButton(
+                                            child:Text("Member",style: TextStyle(color: Color.fromRGBO(255, 221, 3, 1.0)),),
+                                            onPressed:(){
+                                              showDialog(
+                                                  context: context,
+                                                  builder:(BuildContext context){
+                                                    return new MyAlertDialog(
+                                                      title:Text("참여멤버"),
+                                                      actions:<Widget>[
+                                                        RaisedButton(
+                                                          color:Colors.white,
+                                                          child:Text("OK",style: TextStyle(color: Color.fromRGBO(255, 221, 3, 1.0)),),
+                                                          onPressed: (){
+                                                            Navigator.of(context).pop();
+                                                          },
+                                                        ),
+                                                      ],
+                                                      content: Column(
+                                                          children: [Flexible(
+                                                            child: StreamBuilder(
+                                                                stream:Firestore.instance.collection('join').where('id',isEqualTo: document['id']).snapshots(),
+                                                                builder:(context,snapshot){
+                                                                  if(!snapshot.hasData) return const Text('Loading...');
+                                                                  return ListView.builder(
+                                                                    itemCount:snapshot.data.documents.length,
+                                                                    itemBuilder: (context,index) =>
+                                                                        buildUser(context,snapshot.data.documents[index]),
+                                                                  );
+                                                                }
+                                                            ),
+                                                          ),
+                                                          Text("이름을 클릭하면 유저의 정보를 볼 수 있습니다.",style:TextStyle(fontSize: 13.0))
+                                                          ]
+                                                      ),
+                                                    );
+                                                  }
+                                              );
+                                            }
+                                          ),
+                                          FlatButton(
+                                            child:Text("Exit",style: TextStyle(color: Color.fromRGBO(255, 221, 3, 1.0)),),
+                                            onPressed:(){
+                                              _showDialog(document);
+                                            }
+                                          )
+                                        ]
+                                      )
+                                    )
                                   ]
                               )
                           )
                       ),
-                      SizedBox(height: 15.0),
-                      Container(
-                          color: Colors.white,
-                          width: 350.0,
-                          height: 330.0,
-                          child: StreamBuilder(
-                            stream:Firestore.instance.collection('list').document(document.documentID).collection('chat').orderBy('time',descending: false).snapshots(),
-                            builder: (context, snapshot){
-                              if(!snapshot.hasData) return Text("Loading....");
-                              return ListView.builder(
-                                controller: controller,
-                                reverse:true,
-                                itemCount: snapshot.data.documents.length,
-                                itemBuilder: (context,index)=>
-                                  Column(
+                      Card(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color:Color.fromRGBO(255, 221, 3, 1.0),
+                            ),
+                        ),
+                        child: Container(
+                            color: Colors.white,
+
+                            width: 350.0,
+                            height: 360.0,
+                            child: Column(
+                              children: [Flexible(
+                                child: StreamBuilder(
+                                  stream:Firestore.instance.collection('list').document(document.documentID).collection('chat').orderBy('stamp',descending: true).snapshots(),
+                                  builder: (context, snapshot){
+                                    if(!snapshot.hasData) return Text("Loading....");
+                                    return ListView.builder(
+                                      controller: controller,
+                                      reverse:true,
+                                      itemCount: snapshot.data.documents.length,
+                                      itemBuilder: (context,index)=>
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children:[
+                                            Container(
+                                                width:300.0,
+                                                child: Card(
+                                                    shape: RoundedRectangleBorder(
+                                                        side: BorderSide(
+                                                          color:Color.fromRGBO(255, 221, 3, 1.0),
+                                                        ),
+                                                        borderRadius: BorderRadius.circular(30.0)
+                                                    ),
+                                                  color: Color.fromRGBO(255, 221, 3, 1.0),
+                                                  child: Column(
+                                                    mainAxisSize : MainAxisSize.min,
+                                                    children:[
+                                                      ListTile(
+                                                        title:Text('${snapshot.data.documents[index]['name']} : ${snapshot.data.documents[index]['content']}'),
+                                                        subtitle: Text('${snapshot.data.documents[index]['time']}')
+                                                    )
+                                                    ]
+                                                  )
+                                    )
+                                              )
+
+                                          ]
+                                        ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              Center(
+                                child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
-                                    children:[
-                                      SizedBox(height:10.0),
-                                      Padding(
-                                        padding:EdgeInsets.fromLTRB(2.0, 0.0, 2.0, 0.0),
-                                        child: Container(
-                                          width:300.0,
-                                          decoration: BoxDecoration(
-                                            color:Color.fromRGBO(251,196,3,1.0),
-                                            borderRadius: BorderRadius.circular(10.0)
+                                    children: [SizedBox(
+                                        width:290.0,
+                                        child:Theme(
+                                          data: ThemeData(
+                                              cursorColor:Color.fromRGBO(255, 221, 3, 1.0),
+                                              accentColor: Color.fromRGBO(255, 221, 3, 1.0),
+                                              highlightColor: Color.fromRGBO(255, 221, 3, 1.0),
+                                              primaryColor: Color.fromRGBO(255, 221, 3, 1.0)
                                           ),
-                                          child: Card(
-                                            elevation: 10.0,
-                                            color: Color.fromRGBO(251,196,3,1.0),
-                                            child: Padding(
-                                              padding:EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
-                                              child: Row(children:[
-                                                Expanded(child: Text("${snapshot.data.documents[index]['name']} : ${snapshot.data.documents[index]['content']}",style: TextStyle(fontSize: 18.0,color: Colors.black),overflow: TextOverflow.clip,softWrap: true,)),
-                                                Text(snapshot.data.documents[index]['time'],style: TextStyle(fontSize: 13.0,color: Colors.grey),overflow: TextOverflow.clip,softWrap: true,)
-                                              ]),
-                                            ),
+                                          child: TextField(
+                                              controller: textController,
+                                              decoration: InputDecoration(
+                                                filled:true,
+                                                labelText:'input message',
+                                                fillColor: Colors.white,
+                                              )
                                           ),
-                                        ),
+                                        )
+                                    ),
+                                    SizedBox(
+                                      width:20.0,
+                                      child: IconButton(
+                                        iconSize: 30.0,
+                                        icon:Icon(Icons.send),
+                                        onPressed: (){
+                                          var formattedDate = DateFormat('MM.dd hh:mm');
+                                          var timest = FieldValue.serverTimestamp();
+                                          DateTime now = DateTime.now();
+                                          Map<String,dynamic> data={
+                                            'time' : '${now.month}.${now.day} ${now.hour}:${now.minute}',
+                                            'content':textController.text,
+                                            'name':user.displayName,
+                                            'stamp':FieldValue.serverTimestamp()
+                                          };
+                                          textController.text==""?null:
+                                          Firestore.instance.collection('list').document(document.documentID).collection('chat').document().setData(data);
+                                          textController.clear();
+                                          setState((){
+                                            print("yes");
+                                          });
+                                        },
                                       ),
-                                      SizedBox(height:10.0)
+                                    ),
+                                      SizedBox(
+                                        height: 10.0,
+                                      )
                                     ]
-                                  ),
-                              );
-                            },
-                          )
-                      ),
-                      Container(
-                        width:350.0,
-                        color:Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [SizedBox(
-                            width:290.0,
-                            child:TextField(
-                              controller: textController,
-                              decoration: InputDecoration(
-                                filled:true,
-                                labelText:'input message'
-                              )
-                            )
-                          ),
-                            SizedBox(
-                              width:20.0,
-                              child: IconButton(
-                                iconSize: 30.0,
-                                icon:Icon(Icons.send),
-                                onPressed: (){
-                                  var formattedDate = DateFormat('MM.dd hh:mm');
-                                  DateTime now = DateTime.now();
-                                  Map<String,dynamic> data={
-                                    'time' : formattedDate.format(now),
-                                    'content':textController.text,
-                                    'name':user.displayName,
-                                  };
-                                  textController.text==""?null:
-                                  Firestore.instance.collection('list').document(document.documentID).collection('chat').document().setData(data);
-                                  textController.clear();
-                                  setState((){
-                                    print("yes");
-                                  });
-                                },
+                                ),
                               ),
+                              ]
                             )
-                          ]
                         ),
                       ),
+
                       SizedBox(height: 20.0),
 
-                      Center(
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [MaterialButton(
-                              child: Text("Member"),
-                              color: Colors.black,
-                              textColor: Colors.white,
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder:(BuildContext context){
-                                    return new MyAlertDialog(
-                                      title:Text("참여멤버"),
-                                      actions:<Widget>[
-                                        RaisedButton(
-                                          child:Text("OK"),
-                                          onPressed: (){
-                                            Navigator.of(context).pop();
-                                          },
-                                        ),
-                                      ],
-                                      content: Column(
-                                        children: [Flexible(
-                                          child: StreamBuilder(
-                                            stream:Firestore.instance.collection('join').where('id',isEqualTo: document['id']).snapshots(),
-                                            builder:(context,snapshot){
-                                              if(!snapshot.hasData) return const Text('Loading...');
-                                              return ListView.builder(
-                                                itemCount:snapshot.data.documents.length,
-                                                itemBuilder: (context,index) =>
-                                                buildUser(context,snapshot.data.documents[index]),
-                                              );
-                                            }
-                                          ),
-                                        ),
-                                          Text("이름을 클릭하면 유저의 정보를 볼 수 있습니다.",style:TextStyle(fontSize: 13.0))
-                                        ]
-                                      ),
-                                    );
-                                  }
-                                );
-                              },
-                            ),
-                            SizedBox(width: 20.0),
-                            MaterialButton(
-                              child: Text("Exit"),
-                              color: Colors.black,
-                              textColor: Colors.white,
-                              onPressed: () {
-                                _showDialog(document);
-                              },
-                            )
-                            ]
-                        ),
-                      ),
+
                       SizedBox(height: 20.0)
                     ]
                 )

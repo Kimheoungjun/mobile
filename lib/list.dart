@@ -134,7 +134,13 @@ class ListPageState extends State<ListPage> {
         },
       child: new Card(
         elevation: 2.0,
-        color: Color.fromRGBO(255,221,3,1.0),
+        color: Colors.grey[100],
+        shape: RoundedRectangleBorder(
+          side:BorderSide(
+            color:Color.fromRGBO(251,196, 3, 1.0),
+          ),
+          borderRadius: BorderRadius.circular(4.0)
+        ),
 
         child: new Padding(
           padding: new EdgeInsets.all(10.0),
@@ -228,7 +234,7 @@ class ListPageState extends State<ListPage> {
       home: Scaffold(
 
           body:Container(
-            color:Color.fromRGBO(251, 252, 212, 1.0),
+            color:Colors.grey[100],
             child: Column(
               children: [
                 SizedBox(height:30.0,width:500.0),

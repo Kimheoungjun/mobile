@@ -42,16 +42,14 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               new SizedBox(
                 child: new Container(
-
-                  child: new CircleAvatar(
-                    backgroundColor: Color.fromRGBO(255,221, 3, 1.0),
-                    radius: 60.0,
+                  width:210.0,
+                  height:137.0,
+                  child: new Card(
+                    color: Colors.white,
+                    elevation: 5.0,
                     child: Image.network(list[index]['url'],width: 70.0,height:70.0),
                   ),
-
-                  padding: const EdgeInsets.only(
-                      left: 10.0, right: 10.0),
-                ),
+                              ),
               ),
             ],
 //                  : new Container(
@@ -74,10 +72,10 @@ class _HomeState extends State<Home> {
     return new Scaffold(
 
       body: i==0?Container(
-        color:Color.fromRGBO(251, 252, 212, 1.0),
+        color:Colors.white,
         child: Column(
           children: [
-            SizedBox(height:60.0,width:500.0),
+            SizedBox(height:40.0,width:500.0),
             Container(
               width: 250.0,
               height: 60.0,
@@ -88,11 +86,16 @@ class _HomeState extends State<Home> {
                   )
               ),
             ),
-            SizedBox(height:20.0,width:500.0),
+            SizedBox(height:10.0,width:500.0),
+            Divider(
+              height: 10.0,
+              color:Color.fromRGBO(251,196, 3, 1.0),
+            ),
             Flexible(
             child: Container(
-              color:Color.fromRGBO(251, 252, 212, 1.0),
-                child: myGridView),
+              color:Colors.grey[100],
+                child: myGridView,
+            ),
           ),
           ]
         ),
